@@ -1,0 +1,6 @@
+{
+  "tasks": [
+    {"id": "revenue", "prompt": "Find current revenue", "lookup_key": "revenue", "expected_answer": "120", "tool_data": {"revenue": "120", "profit": "20"}},
+    {"id": "profit", "prompt": "Find current profit", "lookup_key": "profit", "expected_answer": "20", "tool_data": {"revenue": "120", "profit": "20"}}
+  ]
+}
