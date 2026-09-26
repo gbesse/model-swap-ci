@@ -2,6 +2,12 @@
 
 [Français](README.md) · [English](README.en.md) · [Español](README.es.md)
 
+## Related projects and target gap
+
+- [Magpie](https://github.com/yetone/magpie) makes model selection and switching easier across agents. Every switch raises a practical question: does the same tool workflow still reach the right outcome?
+- [ReflexBench](https://github.com/brida-ai/reflexbench) evaluates typed decision models. Our scope is the **complete tool-using agent workflow**, which can complement a model benchmark.
+- **Our angle:** replay the same tasks through two adapter commands and show outcome and tool-call regressions. No Magpie or ReflexBench adapter is included.
+
 Replay the same agent tasks against two model adapters and compare verified answer, tool calls, and reported token count. Each adapter is a command: it receives JSON with `task` and `observations` on stdin, then returns either `{"tool":"lookup","args":{"key":"..."},"tokens":6}` or `{"answer":"...","tokens":4}`.
 
 ## Quick start
@@ -19,6 +25,5 @@ The demo exits `2`: the candidate looks up `profit` instead of `revenue`. The re
 
 The MVP provides one synthetic `lookup` tool and checks answers by exact equality. The demo adapter is deterministic; its results say nothing about any real model. Adapter commands execute local code, so use trusted commands only.
 
-Signals: [Magpie](https://github.com/yetone/magpie) and [ReflexBench](https://github.com/brida-ai/reflexbench). The comparison unit here is the complete agent workflow.
 
 MIT licensed. Additional adapters and scenarios are welcome.

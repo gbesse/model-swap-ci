@@ -2,6 +2,12 @@
 
 [Français](README.md) · [English](README.en.md) · [Español](README.es.md)
 
+## Proyectos relacionados y carencia abordada
+
+- [Magpie](https://github.com/yetone/magpie) facilita elegir y cambiar modelos en distintos agentes. Cada cambio plantea una pregunta práctica: ¿el mismo recorrido de herramientas sigue dando el resultado correcto?
+- [ReflexBench](https://github.com/brida-ai/reflexbench) evalúa modelos de decisiones tipadas. Nuestro alcance es **el recorrido completo del agente con herramientas**, que puede complementar un benchmark de modelos.
+- **Nuestro enfoque:** repetir las mismas tareas con dos órdenes de adaptador y mostrar regresiones del resultado y de las llamadas. No se incluye un adaptador para Magpie ni ReflexBench.
+
 Repite las mismas tareas de agente con dos adaptadores de modelo y compara respuesta verificada, llamadas a herramientas y tokens declarados. Cada adaptador es una orden: recibe JSON con `task` y `observations` por stdin y devuelve `{"tool":"lookup","args":{"key":"..."},"tokens":6}` o `{"answer":"...","tokens":4}`.
 
 ## Inicio rápido
@@ -19,6 +25,5 @@ La demostración sale con código `2`: el candidato consulta `profit` en vez de 
 
 El MVP ofrece una herramienta sintética `lookup` y comprueba respuestas por igualdad exacta. El adaptador de demostración es determinista; sus resultados no miden ningún modelo real. Las órdenes de adaptador ejecutan código local: usa solo órdenes de confianza.
 
-Señales: [Magpie](https://github.com/yetone/magpie) y [ReflexBench](https://github.com/brida-ai/reflexbench). Aquí se compara el recorrido completo del agente.
 
 Licencia MIT. Se aceptan más adaptadores y escenarios.
