@@ -1,5 +1,17 @@
 # model-swap-ci
 
+## New: compare requested and routed reasoning
+
+`python3 reasoning_audit.py reasoning-demo --lang en` shows two mismatches in ten seconds: `none → low` and `ultra: xhigh → max` (successful demo exits 0). For your captures, save Magpie route-log excerpts in the shape of `examples/reasoning-cases.json`, then point to the real Codex model cache:
+
+```sh
+python3 reasoning_audit.py reasoning-check cases.json --models-cache ~/.codex/models_cache.json --lang en
+```
+
+`none` cases compare the request with route-log `effort`; `ultra` cases require an official model entry with `multi_agent_reasoning_effort` and a consistent official route. Missing evidence or disagreement between `effort` and `tries[].effort` stays inconclusive. Exit codes: 0 parity, 2 mismatch, 3 incomplete evidence, 1 invalid capture. This reads real route-log and cache formats without calling a model or showing prompts. The log shows the effort selected by the route, **not** provider-internal reasoning or billed tokens. Demo fixtures are reconstructed from public reports, not the reporters' private captures.
+
+**Related projects:** [Magpie #1098](https://github.com/yetone/magpie/issues/1098) reports `off → low`; [#1108](https://github.com/yetone/magpie/issues/1108) reports `xhigh → max` through a third-party model. [Magpie](https://github.com/yetone/magpie) supplies the routes; this independent checker does not change its configuration.
+
 [Français](README.md) · [English](README.en.md) · [Español](README.es.md)
 
 ## Related projects and target gap
