@@ -1,5 +1,17 @@
 # model-swap-ci
 
+## Nuevo: comparar el razonamiento solicitado y el enrutado
+
+`python3 reasoning_audit.py reasoning-demo --lang es` muestra dos diferencias en diez segundos: `none → low` y `ultra: xhigh → max` (la demo correcta sale con código 0). Para sus capturas, guarde extractos de los logs de ruta Magpie con el formato de `examples/reasoning-cases.json` y apunte al caché real de modelos Codex:
+
+```sh
+python3 reasoning_audit.py reasoning-check casos.json --models-cache ~/.codex/models_cache.json --lang es
+```
+
+Los casos `none` comparan la petición con `effort` del log; los casos `ultra` requieren una entrada oficial con `multi_agent_reasoning_effort` y una ruta oficial coherente. Si faltan pruebas o `effort` y `tries[].effort` discrepan, el resultado queda inconcluso. Códigos de salida: 0 paridad, 2 diferencia, 3 prueba incompleta, 1 captura no válida. Lee formatos reales de log y caché sin llamar a un modelo ni mostrar prompts. El log indica el nivel elegido por la ruta, **no** el razonamiento interno del proveedor ni los tokens facturados. Las fixtures de la demo se reconstruyeron a partir de informes públicos, no son capturas privadas de sus autores.
+
+**Proyectos relacionados:** [Magpie #1098](https://github.com/yetone/magpie/issues/1098) informa de `off → low` y [#1108](https://github.com/yetone/magpie/issues/1108) de `xhigh → max` con un modelo tercero. [Magpie](https://github.com/yetone/magpie) proporciona las rutas; esta herramienta independiente no cambia su configuración.
+
 [Français](README.md) · [English](README.en.md) · [Español](README.es.md)
 
 ## Proyectos relacionados y carencia abordada

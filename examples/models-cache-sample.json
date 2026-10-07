@@ -1,0 +1,4 @@
+{"models": [
+  {"slug": "gpt-6-astra", "multi_agent_reasoning_effort": "xhigh"},
+  {"slug": "s2a/gpt-6-astra"}
+]}

@@ -1,0 +1,11 @@
+{"cases": [
+  {"id": "off-became-low", "requested_effort": "none",
+   "candidate_route": {"model": "deepseek/deepseek-flash", "effort": "low",
+     "tries": [{"id": "deepseek", "model": "deepseek-flash", "effort": "low", "status": 200}]}},
+  {"id": "ultra-differs", "requested_effort": "ultra",
+   "official_slug": "gpt-6-astra", "candidate_slug": "s2a/gpt-6-astra",
+   "baseline_route": {"model": "gpt-6-astra", "effort": "xhigh",
+     "tries": [{"id": "codex", "model": "gpt-6-astra", "effort": "xhigh", "status": 200}]},
+   "candidate_route": {"model": "s2a/gpt-6-astra", "effort": "max",
+     "tries": [{"id": "s2a", "model": "gpt-6-astra", "effort": "max", "status": 200}]}}
+]}
