@@ -1,5 +1,11 @@
 # model-swap-ci
 
+## Nuevo: comprobar un alias de modelo en un relé
+
+**« Mi alias de relé perdió el razonamiento o las llamadas a herramientas. »** `python3 capability_alias.py demo --lang es` muestra una discrepancia sintética. Para datos guardados, ejecute `python3 capability_alias.py check --mapping alias.json --catalog catalog.json --lang es`. El mapeo nombra explícitamente `routed_id` y `catalog_id`; `catalog.json` contiene `models` con `reasoning`, `vision`, `context_window` y `tool_calling` por ID. Si falta un campo, el resultado es indeterminado. La herramienta no adivina ni aplica alias.
+
+**Proyectos relacionados:** [Magpie #1383](https://github.com/yetone/magpie/issues/1383) informa de metadatos de capacidad perdidos por un ID de relé renombrado; [Magpie](https://github.com/yetone/magpie) es el enrutador vecino. La integración real es la lectura de un catálogo JSON guardado, sin complemento Magpie directo ni afiliación.
+
 ## Nuevo: comparar el razonamiento solicitado y el enrutado
 
 `python3 reasoning_audit.py reasoning-demo --lang es` muestra dos diferencias en diez segundos: `none → low` y `ultra: xhigh → max` (la demo correcta sale con código 0). Para sus capturas, guarde extractos de los logs de ruta Magpie con el formato de `examples/reasoning-cases.json` y apunte al caché real de modelos Codex:
