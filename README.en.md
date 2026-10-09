@@ -1,5 +1,11 @@
 # model-swap-ci
 
+## New: check a renamed relay model
+
+**“My relay alias lost reasoning or tool calling.”** `python3 capability_alias.py demo --lang en` shows a synthetic mismatch. For saved evidence, run `python3 capability_alias.py check --mapping alias.json --catalog catalog.json --lang en`. The mapping explicitly names `routed_id` and `catalog_id`; `catalog.json` has a `models` object with `reasoning`, `vision`, `context_window`, and `tool_calling` per ID. Missing fields are inconclusive. The tool never guesses or applies an alias.
+
+**Related projects:** [Magpie #1383](https://github.com/yetone/magpie/issues/1383) reports lost capability metadata on a renamed relay ID; [Magpie](https://github.com/yetone/magpie) is the neighboring router. The actual integration is reading a saved JSON catalog, with no direct Magpie plugin or affiliation.
+
 ## New: compare requested and routed reasoning
 
 `python3 reasoning_audit.py reasoning-demo --lang en` shows two mismatches in ten seconds: `none → low` and `ultra: xhigh → max` (successful demo exits 0). For your captures, save Magpie route-log excerpts in the shape of `examples/reasoning-cases.json`, then point to the real Codex model cache:

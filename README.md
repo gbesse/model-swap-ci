@@ -1,5 +1,11 @@
 # model-swap-ci
 
+## Nouveau : vérifier un alias de modèle relayé
+
+**« Mon alias de relais a perdu la capacité de raisonner ou d’appeler des outils. »** `python3 capability_alias.py demo --lang fr` affiche une divergence synthétique. Pour vos données, lancez `python3 capability_alias.py check --mapping alias.json --catalog catalog.json --lang fr`. Le mapping nomme explicitement `routed_id` et `catalog_id` ; `catalog.json` contient `models` avec `reasoning`, `vision`, `context_window` et `tool_calling` pour chaque ID. Un champ absent donne « preuve incomplète ». Aucun alias n’est deviné ni appliqué automatiquement.
+
+**Projets voisins :** [Magpie #1383](https://github.com/yetone/magpie/issues/1383) décrit les métadonnées perdues par un ID de relais renommé ; [Magpie](https://github.com/yetone/magpie) est le routeur voisin. L’intégration réelle est l’analyse d’un catalogue JSON sauvegardé ; pas de branchement Magpie direct ni d’affiliation.
+
 ## Nouveau : comparer le raisonnement demandé et routé
 
 `python3 reasoning_audit.py reasoning-demo --lang fr` montre deux divergences en dix secondes : `none → low` et `ultra : xhigh → max` (démo réussie : code 0). Pour vos captures, enregistrez les extraits de journaux de route Magpie dans un fichier au format `examples/reasoning-cases.json`, puis utilisez le vrai cache de modèles Codex :
